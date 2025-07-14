@@ -54,57 +54,6 @@
     
 	<!-- mathjax -->
 	
-
-<script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.13.0/dist/av-min.js"></script>
-<script>
-  (function() {
-    // 初始化配置
-    const config = {
-      appId: 'LHtSjCOsjES0f9scd2nR9SnD-MdYXbMMI',
-      appKey: 'miGzeGyJRCCSMLmI4PjVEIMs',
-      className: 'count'
-    };
-    
-    // 设置服务器URL（国际版）
-    const appIdPrefix = config.appId.slice(0,8).toLowerCase();
-    AV.init({
-      appId: config.appId,
-      appKey: config.appKey,
-      serverURLs: `https://${appIdPrefix}.api.lncldglobal.com`
-    });
-    
-    // 页面访问计数器
-    function updateCounter() {
-      const className = config.className;
-      const query = new AV.Query(className);
-      const url = '2025/07/07/test/';
-      
-      query.equalTo('url', url);
-      query.find().then(results => {
-        if (results.length > 0) {
-          const counter = results[0];
-          counter.increment('views', 1);
-          counter.save();
-          document.getElementById('lc-counter').innerText = counter.get('views') + 1;
-        } else {
-          const newCounter = new AV.Object(className);
-          newCounter.set('url', url);
-          newCounter.set('title', 'test');
-          newCounter.set('views', 1);
-          newCounter.save().then(() => {
-            document.getElementById('lc-counter').innerText = '1';
-          });
-        }
-      });
-    }
-    
-    // 页面加载完成后执行
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(updateCounter, 1000);
-    });
-  })();
-</script>
-
 <meta name="generator" content="Hexo 7.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -200,14 +149,6 @@
     </div>
 
 
-
-      
-  <span class="post-meta-divider">|</span>
-  <span class="leancloud-counter">
-    <i class="fa fa-eye"></i>
-    <span id="lc-counter">0</span> 访问量
-  </span>
-  
     </div>
   </header>
   
@@ -293,6 +234,18 @@
           --><li><a href="/search/">Search</a></li><!--
         -->
           </ul>
+          <ul>
+            
+              <!-- 不蒜子统计 -->
+              <span id="busuanzi_container_site_pv">
+                  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+              </span>
+              <span class="post-meta-divider">|</span>
+              <span id="busuanzi_container_site_uv" style='display:none'>
+                      本站访客数<span id="busuanzi_value_site_uv"></span>人
+              </span>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
           </ul>
         </nav>
       </div>
