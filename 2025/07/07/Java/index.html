@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="命令基础命令12jps													&#x2F;&#x2F;Java 进程状态jmap -dump:format&#x3D;b,file&#x3D;&#x2F;tmp&#x2F;tmp.hprof 12345		&#x2F;&#x2F;导出堆信息      jar1234567891011121.编译javac .\SayHello.java2.打包2.jar -cvf MyJarTest.jar .\SayHello.class.\MyJarTest.jar中没">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java">
+<meta property="og:url" content="http://example.com/2025/07/07/Java/index.html">
+<meta property="og:site_name" content="Z2field">
+<meta property="og:description" content="命令基础命令12jps													&#x2F;&#x2F;Java 进程状态jmap -dump:format&#x3D;b,file&#x3D;&#x2F;tmp&#x2F;tmp.hprof 12345		&#x2F;&#x2F;导出堆信息      jar1234567891011121.编译javac .\SayHello.java2.打包2.jar -cvf MyJarTest.jar .\SayHello.class.\MyJarTest.jar中没">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-07T11:06:14.000Z">
+<meta property="article:modified_time" content="2025-07-28T20:50:04.463Z">
+<meta property="article:author" content="Z2field">
+<meta property="article:tag" content="Writing">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/writing/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/travel/">Travel</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2025/07/15/Java%E4%BB%A3%E7%90%86/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/07/Java/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/07/Java/&text=Java"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/07/Java/&is_video=false&description=Java"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java&body=Check out this article: http://example.com/2025/07/07/Java/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/07/Java/&name=Java&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/07/Java/&t=Java"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jar"><span class="toc-number">1.2.</span> <span class="toc-text">jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-number">1.4.</span> <span class="toc-text">反射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">调用流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#invoke"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">invoke</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">私有属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">主要利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea"><span class="toc-number">1.7.</span> <span class="toc-text">idea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E6%99%AE%E9%80%9A%E9%A1%B9%E7%9B%AE%E5%8F%98%E4%B8%BAmaven%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">如何将普通项目变为maven项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maven"><span class="toc-number">1.7.2.</span> <span class="toc-text">maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.7.3.</span> <span class="toc-text">快捷键</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Java
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Z2field</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-07T11:06:14.000Z" class="dt-published" itemprop="datePublished">2025-07-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Writing/" rel="tag">Writing</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jps													//Java 进程状态</span><br><span class="line">jmap -dump:format=b,file=/tmp/tmp.hprof 12345		//导出堆信息</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="jar"><a href="#jar" class="headerlink" title="jar"></a>jar</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.编译</span><br><span class="line">javac .\SayHello.java</span><br><span class="line">2.打包</span><br><span class="line">2.jar -cvf MyJarTest.jar .\SayHello.class</span><br><span class="line">.\MyJarTest.jar中没有主清单属性</span><br><span class="line">3.jar -cvfm .\MyJarTest.jar .\MANIFEST.MF .\SayHello.class</span><br><span class="line">//MANIFEST.MF文件内容</span><br><span class="line">Manifest-Version: 1.0</span><br><span class="line">Main-Class: SayHello</span><br><span class="line"></span><br><span class="line">//上边换行最好带上</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">类名.class 相当于返回这个类的对象 	任何一个类，都会有一个Class对象于这个类对应</span><br><span class="line">比如  Runtime.class =&gt; 返回一个Runtime对象</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="调用流程"><a href="#调用流程" class="headerlink" title="调用流程"></a>调用流程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">调用流程</span><br><span class="line">首先，使用Class t = Class.forName(&quot;Test&quot;)获取类的原型</span><br><span class="line">然后 Constructor constructor = t.getConstructor() 获取无参构造器</span><br><span class="line">把获取到的无参构造器通过constructor.NewInstance(),用父类Object实例化,得到实例化对象o</span><br><span class="line">Object o = constructor.NewInstance()</span><br><span class="line">用Method类中的getMethod()通过类的原型t来获取方法</span><br><span class="line">Method m = t.getMethod(&quot;hi&quot;)</span><br><span class="line">最后再用Method类的invoke()来执行方法</span><br><span class="line">m.invoke(o);	//调用t原型的hi方法，对象为o</span><br></pre></td></tr></table></figure>
+
+<h4 id="invoke"><a href="#invoke" class="headerlink" title="invoke"></a>invoke</h4><p>关于invoke<br>如果这个方法是一个普通方法，那么第一个参数是类对象<br>如果这个方法是一个静态方法，那么第一个参数是类<br>正常执行方法是 [1].method([2], [3], [4]…)其实在反射里就是<br>method.invoke([1], [2], [3], [4]…) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line">    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException, IOException &#123;</span><br><span class="line">        Runtime runtime = Runtime.getRuntime();</span><br><span class="line">        runtime.exec(&quot;calc&quot;);</span><br><span class="line"></span><br><span class="line">        Class&lt;?&gt; c = Class.forName(&quot;java.lang.Runtime&quot;);</span><br><span class="line">        Method getRuntime = c.getMethod(&quot;getRuntime&quot;);</span><br><span class="line">        Method exec = c.getMethod(&quot;exec&quot;, String.class);</span><br><span class="line">        </span><br><span class="line">        //本来应该是Runtime.getRuntime()，那么反射调用就是 getRuntime.invoke(c)</span><br><span class="line">        Object o = getRuntime.invoke(c);  </span><br><span class="line">        </span><br><span class="line">        //本来应该是Runtime.getRuntime().exec(&quot;calc&quot;)，那么反射调用就是exec.invoke(Runtime.getRuntime(),&quot;calc&quot;)</span><br><span class="line">        exec.invoke(o,&quot;calc&quot;);           </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="私有属性"><a href="#私有属性" class="headerlink" title="私有属性"></a>私有属性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//注意，如果是 private方法，需要用getDeclaredMethod()方法调用</span><br><span class="line">调用之后，调用</span><br><span class="line">方法来允许我们操作私有方法</span><br><span class="line">获取属性应该从原型类中获取</span><br><span class="line">修改类的属性从实例中修改</span><br><span class="line">应该setAccessible(true)修改实例的private</span><br><span class="line">获取方法的也是从原型类中获取</span><br></pre></td></tr></table></figure>
+
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">序列化/反序列化基本要求:一个类要想实现序列化和反序列化，就必须继承Serializable接口</span><br><span class="line"></span><br><span class="line">序列化:</span><br><span class="line">java.io.ObjectOutputStream</span><br><span class="line">包装一个其他类型的输出流,然后通过其自带的writeObject方法写入对象。</span><br><span class="line"></span><br><span class="line">FileOutputStream		//文件输出流，将序列化后的字节序列写入特定的文件中</span><br><span class="line"></span><br><span class="line">反序列化：</span><br><span class="line">java.io.ObjectInputStream</span><br><span class="line">包装一个其他类型的输入流，然后通过其自带的readObject方法写入对象。</span><br><span class="line">FileInputStream		   //文件输入流，从特定的文件中读取出字节序列</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="主要利用方法"><a href="#主要利用方法" class="headerlink" title="主要利用方法"></a>主要利用方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">readObject()</span><br><span class="line">invoke()</span><br><span class="line">Runtime没有继承序列化 但是Runtime.class可以序列化</span><br><span class="line">Runtime的构造器也是私有的 但是有一个静态方法getRuntime</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h2><h3 id="如何将普通项目变为maven项目"><a href="#如何将普通项目变为maven项目" class="headerlink" title="如何将普通项目变为maven项目"></a>如何将普通项目变为maven项目</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2023版本以上，点击help--&gt; find action     Add Framework Support</span><br></pre></td></tr></table></figure>
+
+<h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如何将普通项目变为maven项目</span><br><span class="line">2023版本以上，点击help--&gt; find action     Add Framework Support</span><br><span class="line"></span><br><span class="line">maven仓库问题</span><br><span class="line">appearance &amp; behavior --&gt; system setting  --&gt; 取消勾选 Reopen projects on startup</span><br></pre></td></tr></table></figure>
+
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + Alt + L		//快速格式化代码</span><br><span class="line">ctrl+alt+shift+F7	//设置搜索范围 ALL place太繁杂 不好跟踪</span><br><span class="line">Ctrl+Alt+鼠标左键	//进入父类</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/writing/">Writing</a></li>
+        
+          <li><a href="/travel/">Travel</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jar"><span class="toc-number">1.2.</span> <span class="toc-text">jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-number">1.4.</span> <span class="toc-text">反射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">调用流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#invoke"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">invoke</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">私有属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.5.</span> <span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">主要利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea"><span class="toc-number">1.7.</span> <span class="toc-text">idea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E6%99%AE%E9%80%9A%E9%A1%B9%E7%9B%AE%E5%8F%98%E4%B8%BAmaven%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">如何将普通项目变为maven项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maven"><span class="toc-number">1.7.2.</span> <span class="toc-text">maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.7.3.</span> <span class="toc-text">快捷键</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/07/Java/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/07/Java/&text=Java"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/07/Java/&is_video=false&description=Java"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java&body=Check out this article: http://example.com/2025/07/07/Java/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/07/Java/&title=Java"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/07/Java/&name=Java&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/07/Java/&t=Java"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+      <div class="footer-left">
+        Copyright &copy;
+        
+        
+        2016-2025
+        Z2field
+      </div>
+      <div class="footer-right">
+        <nav>
+          <ul>
+            <!--
+          --><li><a href="/">Home</a></li><!--
+        --><!--
+          --><li><a href="/about/">About</a></li><!--
+        --><!--
+          --><li><a href="/writing/">Writing</a></li><!--
+        --><!--
+          --><li><a href="/travel/">Travel</a></li><!--
+        --><!--
+          --><li><a href="/search/">Search</a></li><!--
+        -->
+          </ul>
+          <ul>
+            
+              <!-- 不蒜子统计 -->
+              <span id="busuanzi_container_site_pv">
+                  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+              </span>
+              <span class="post-meta-divider">|</span>
+              <span id="busuanzi_container_site_uv" style='display:none'>
+                      本站访客数<span id="busuanzi_value_site_uv"></span>人
+              </span>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+          </ul>
+        </nav>
+      </div>
+      
+</footer>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
