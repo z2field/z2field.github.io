@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>phpstudy+phpstrom+Xdeubg进行调试</title>
+      <link href="/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/"/>
+      <url>/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>网上有很多配置教程，但是都已经失效，很多php.ini的配置的参数已经废弃了，在配置过程中踩了很多坑，所以写一篇记录一下</p><h1 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h1><p>环境：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">win11</span><br><span class="line">phpstorm 2023</span><br><span class="line">phpstudy2018</span><br></pre></td></tr></table></figure><h2 id="下载对应的xdebug文件"><a href="#下载对应的xdebug文件" class="headerlink" title="下载对应的xdebug文件"></a>下载对应的xdebug文件</h2><p>网上很多教程说去这个网站检查<a href="https://xdebug.org/wizard">Xdebug: Support — Tailored Installation Instructions</a> ，但实际上真的去把phpinfo()信息放进去发现</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020229485.png"></p><p>或者是这样</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020338915.png"></p><p>这是因为xdebug已经不再支持过早的版本或者是32位的版本检测。我们只需要去<a href="https://xdebug.org/download/historical">Xdebug: Historical Releases</a>去下载对应版本的xdebug文件</p><p>通过phpinfo()的信息我们知道，当前的php版本为7.2.1，MSVC15，x86</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020542217.png"></p><p>所以我们应该下载</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020827857.png"></p><p>下载完成之后放入<code>php2018\PHPTutorial\php\php-7.2.1-nts\ext</code>下</p><p>然后打开<code>php.ini</code>文件</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021152573.png"></p><p>填入如下配置</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[XDebug]</span><br><span class="line">xdebug.output_dir=&quot;D:\yourpath\php2018\PHPTutorial\tmp\xdebug&quot;</span><br><span class="line">zend_extension=&quot;D:\yourpath\php2018\PHPTutorial\php\php-7.2.1-nts\ext\php_xdebug-3.1.6-7.2-vc15-nts.dll&quot;</span><br><span class="line">xdebug.mode= &quot;debug&quot;</span><br><span class="line">xdebug.remote_handler = &quot;dbgp&quot;</span><br><span class="line">xdebug.client_port = 9003</span><br><span class="line">xdebug.remote_host=127.0.0.1</span><br><span class="line">xdebug.idekey=&quot;PHPSTORM&quot;</span><br></pre></td></tr></table></figure><h2 id="idea配置"><a href="#idea配置" class="headerlink" title="idea配置"></a>idea配置</h2><p>选择对应的php环境和xdebug文件</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021518144.png"></p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021330890.png"></p><p>配置完成以后可以测试一下</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021759608.png" alt="image-20250730021759452"></p><p>我们可以去Google插件商店安装一个插件<code>https://chromewebstore.google.com/detail/xdebug-helper-by-jetbrain/aoelhdemabeimdhedkidlnbkfhnhgnhm</code></p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022010640.png" alt="image-20250730022010546"></p><h2 id="开始调试"><a href="#开始调试" class="headerlink" title="开始调试"></a>开始调试</h2><p>准备工作都做完后，我们开始调试</p><p>首先浏览器插件开启debug模式</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022352130.png" alt="image-20250730022352100"></p><p>然后，idea中进行监听，并随意打上一个断点</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022443356.png" alt="image-20250730022443273"></p><p>浏览器中输入url访问</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022539946.png" alt="image-20250730022539764"></p><p>成功在断点处停下来，此时我们就可以愉快的进行php代码审计了</p><p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022638855.png" alt="image-20250730022638720"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Writing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>arthas内存分析工具</title>
       <link href="/2025/07/29/arthas%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"/>
       <url>/2025/07/29/arthas%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</url>

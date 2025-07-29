@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="前言网上有很多配置教程，但是都已经失效，很多php.ini的配置的参数已经废弃了，在配置过程中踩了很多坑，所以写一篇记录一下 配置过程环境： 123win11phpstorm 2023phpstudy2018    下载对应的xdebug文件网上很多教程说去这个网站检查Xdebug: Support — Tailored Installation Instructions ，但实际上真的去把php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="phpstudy+phpstrom+Xdeubg进行调试">
+<meta property="og:url" content="http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/index.html">
+<meta property="og:site_name" content="Z2field">
+<meta property="og:description" content="前言网上有很多配置教程，但是都已经失效，很多php.ini的配置的参数已经废弃了，在配置过程中踩了很多坑，所以写一篇记录一下 配置过程环境： 123win11phpstorm 2023phpstudy2018    下载对应的xdebug文件网上很多教程说去这个网站检查Xdebug: Support — Tailored Installation Instructions ，但实际上真的去把php">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020229485.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020338915.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020542217.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020827857.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021152573.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021518144.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021330890.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021759608.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022010640.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022352130.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022443356.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022539946.png">
+<meta property="og:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022638855.png">
+<meta property="article:published_time" content="2025-07-29T17:55:20.000Z">
+<meta property="article:modified_time" content="2025-07-29T18:27:47.163Z">
+<meta property="article:author" content="Z2field">
+<meta property="article:tag" content="Writing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020229485.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>phpstudy+phpstrom+Xdeubg进行调试</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/writing/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/travel/">Travel</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/07/29/arthas%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&text=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&is_video=false&description=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=phpstudy+phpstrom+Xdeubg进行调试&body=Check out this article: http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&name=phpstudy+phpstrom+Xdeubg进行调试&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&t=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">配置过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84xdebug%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">下载对应的xdebug文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">idea配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%B0%83%E8%AF%95"><span class="toc-number">2.3.</span> <span class="toc-text">开始调试</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        phpstudy+phpstrom+Xdeubg进行调试
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Z2field</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-07-29T17:55:20.000Z" class="dt-published" itemprop="datePublished">2025-07-30</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Writing/" rel="tag">Writing</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>网上有很多配置教程，但是都已经失效，很多php.ini的配置的参数已经废弃了，在配置过程中踩了很多坑，所以写一篇记录一下</p>
+<h1 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h1><p>环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">win11</span><br><span class="line">phpstorm 2023</span><br><span class="line">phpstudy2018</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="下载对应的xdebug文件"><a href="#下载对应的xdebug文件" class="headerlink" title="下载对应的xdebug文件"></a>下载对应的xdebug文件</h2><p>网上很多教程说去这个网站检查<a target="_blank" rel="noopener" href="https://xdebug.org/wizard">Xdebug: Support — Tailored Installation Instructions</a> ，但实际上真的去把phpinfo()信息放进去发现</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020229485.png"></p>
+<p>或者是这样</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020338915.png"></p>
+<p>这是因为xdebug已经不再支持过早的版本或者是32位的版本检测。我们只需要去<a target="_blank" rel="noopener" href="https://xdebug.org/download/historical">Xdebug: Historical Releases</a>去下载对应版本的xdebug文件</p>
+<p>通过phpinfo()的信息我们知道，当前的php版本为7.2.1，MSVC15，x86</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020542217.png"></p>
+<p>所以我们应该下载</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730020827857.png"></p>
+<p>下载完成之后放入<code>php2018\PHPTutorial\php\php-7.2.1-nts\ext</code>下</p>
+<p>然后打开<code>php.ini</code>文件</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021152573.png"></p>
+<p>填入如下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[XDebug]</span><br><span class="line">xdebug.output_dir=&quot;D:\yourpath\php2018\PHPTutorial\tmp\xdebug&quot;</span><br><span class="line">zend_extension=&quot;D:\yourpath\php2018\PHPTutorial\php\php-7.2.1-nts\ext\php_xdebug-3.1.6-7.2-vc15-nts.dll&quot;</span><br><span class="line">xdebug.mode= &quot;debug&quot;</span><br><span class="line">xdebug.remote_handler = &quot;dbgp&quot;</span><br><span class="line">xdebug.client_port = 9003</span><br><span class="line">xdebug.remote_host=127.0.0.1</span><br><span class="line">xdebug.idekey=&quot;PHPSTORM&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="idea配置"><a href="#idea配置" class="headerlink" title="idea配置"></a>idea配置</h2><p>选择对应的php环境和xdebug文件</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021518144.png"></p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021330890.png"></p>
+<p>配置完成以后可以测试一下</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730021759608.png" alt="image-20250730021759452"></p>
+<p>我们可以去Google插件商店安装一个插件<code>https://chromewebstore.google.com/detail/xdebug-helper-by-jetbrain/aoelhdemabeimdhedkidlnbkfhnhgnhm</code></p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022010640.png" alt="image-20250730022010546"></p>
+<h2 id="开始调试"><a href="#开始调试" class="headerlink" title="开始调试"></a>开始调试</h2><p>准备工作都做完后，我们开始调试</p>
+<p>首先浏览器插件开启debug模式</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022352130.png" alt="image-20250730022352100"></p>
+<p>然后，idea中进行监听，并随意打上一个断点</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022443356.png" alt="image-20250730022443273"></p>
+<p>浏览器中输入url访问</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022539946.png" alt="image-20250730022539764"></p>
+<p>成功在断点处停下来，此时我们就可以愉快的进行php代码审计了</p>
+<p><img src="http://cdn.jsdelivr.net/gh/z2field/Picture@main/img/20250730022638855.png" alt="image-20250730022638720"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/writing/">Writing</a></li>
+        
+          <li><a href="/travel/">Travel</a></li>
+        
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">配置过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%9A%84xdebug%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">下载对应的xdebug文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">idea配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%B0%83%E8%AF%95"><span class="toc-number">2.3.</span> <span class="toc-text">开始调试</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&text=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&is_video=false&description=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=phpstudy+phpstrom+Xdeubg进行调试&body=Check out this article: http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&title=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&name=phpstudy+phpstrom+Xdeubg进行调试&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/07/30/phpstudy-phpstrom-Xdeubg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95/&t=phpstudy+phpstrom+Xdeubg进行调试"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+      <div class="footer-left">
+        Copyright &copy;
+        
+        
+        2016-2025
+        Z2field
+      </div>
+      <div class="footer-right">
+        <nav>
+          <ul>
+            <!--
+          --><li><a href="/">Home</a></li><!--
+        --><!--
+          --><li><a href="/about/">About</a></li><!--
+        --><!--
+          --><li><a href="/writing/">Writing</a></li><!--
+        --><!--
+          --><li><a href="/travel/">Travel</a></li><!--
+        --><!--
+          --><li><a href="/search/">Search</a></li><!--
+        -->
+          </ul>
+          <ul>
+            
+              <!-- 不蒜子统计 -->
+              <span id="busuanzi_container_site_pv">
+                  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+              </span>
+              <span class="post-meta-divider">|</span>
+              <span id="busuanzi_container_site_uv" style='display:none'>
+                      本站访客数<span id="busuanzi_value_site_uv"></span>人
+              </span>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            
+          </ul>
+        </nav>
+      </div>
+      
+</footer>
+
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
